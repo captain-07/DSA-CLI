@@ -1,0 +1,2 @@
+# No external dependencies required for the base CLI
+# (Uses standard library and gemini CLI tool)

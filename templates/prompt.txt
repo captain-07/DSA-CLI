@@ -1,0 +1,44 @@
+Act as an elite Software Engineer and DSA expert. Generate a structured markdown note for the following DSA problem.
+
+Problem Name: {problem_name}
+User Note/Mistake: {mistake}
+
+Follow these STRICT formatting rules:
+
+1. **Metadata & Placement Tags:**
+   - Identify common companies that ask this (e.g., #TCS, #Amazon, #Google, #Service-Based).
+   - Add a "Confidence Level" placeholder: [ ] Low [ ] Mid [ ] High.
+
+2. **Pattern:**
+   - Define the algorithmic pattern (e.g., Two Pointers, Sliding Window, Greedy, Backtracking).
+
+3. **Logic Evolution:**
+   - **Brute Force:** Describe the naive approach and why it's inefficient.
+   - **Better:** Describe a middle-ground optimization (if applicable).
+   - **Optimal:** Explain the most efficient logic clearly.
+
+4. **Python Implementation (Optimal):**
+   - Provide clean, Pythonic code.
+   - Include inline comments explaining complex transitions.
+
+5. **Dry Run Table:**
+   - Create a Markdown table. Trace a sample input step-by-step, showing variable changes (e.g., `i`, `j`, `current_sum`, `ans`).
+
+6. **Edge Cases:**
+   - List 3-4 specific scenarios (e.g., empty array, $n=1$, all identical elements, negative integers).
+
+7. **Common Mistakes:**
+   - Use an Obsidian Callout (> [!CAUTION] Mistakes).
+   - List logical "gotchas" or syntax errors.
+   - Address the user's specific note: {mistake}
+
+8. **Complexity Analysis:**
+   - Use LaTeX for all math: $O(n)$ or $O(n \log n)$.
+   - Provide a 1-sentence justification for both Time and Space complexity.
+
+9. **Output ONLY the Markdown content.** No "Here is your note" or "Sure, I can help."
+10. **Include a horizontal separator '---' between main sections.**
+11. **Use '##' for main headers.**
+
+# {problem_name}
+---

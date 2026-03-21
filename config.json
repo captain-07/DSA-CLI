@@ -1,0 +1,4 @@
+{
+  "vault_path": "./vault",
+  "model": "gemini-2.0-flash"
+}
