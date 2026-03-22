@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dsa-cli"
+version = "0.1.0"
+description = "Generate structured DSA notes in one line"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+dsa = "dsa.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dsa*"]

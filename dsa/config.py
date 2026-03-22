@@ -2,7 +2,8 @@ import json
 import os
 import sys
 
-CONFIG_FILE = "config.json"
+from pathlib import Path
+CONFIG_FILE = Path(__file__).parent.parent / "config.json"
 
 DEFAULT_CONFIG = {
     "vault_path": "./vault",

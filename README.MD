@@ -4,7 +4,7 @@ A production-ready CLI tool to convert a single-line input into structured DSA n
 
 ## 🛠 Features
 - **Fast Input:** Just `python -m dsa.main "Problem Name | My Mistake"`
-- **AI-Powered (Most Powerful):** Defaults to `gemini-3-pro-preview` for high-quality notes.
+- **AI-Powered:** Defaults to `auto` (resolves to the most powerful Gemini model available).
 - **Robust Fallbacks:** Automatically tries fallback models if the primary model is unavailable.
 - **Smart Routing:** Automatically maps problems to folders (Arrays, DP, Graph, etc.).
 - **Obsidian Ready:** Saves in Markdown with tags and revision checklists in your specified vault.
@@ -18,7 +18,7 @@ A production-ready CLI tool to convert a single-line input into structured DSA n
 ```json
 {
   "vault_path": "C:\\Users\\USER\\OneDrive\\Documents\\Desktop\\Obsidian\\DSA",
-  "model": "gemini-3-pro-preview",
+  "model": "auto",
   "fallback_models": ["gemini-3-flash-preview", "gemini-2.5-pro", "gemini-2.0-flash", "auto"]
 }
 ```

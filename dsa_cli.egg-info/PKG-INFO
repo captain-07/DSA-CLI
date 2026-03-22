@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: dsa-cli
+Version: 0.1.0
+Summary: Generate structured DSA notes in one line
+Requires-Python: >=3.10
