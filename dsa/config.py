@@ -6,7 +6,8 @@ CONFIG_FILE = "config.json"
 
 DEFAULT_CONFIG = {
     "vault_path": "./vault",
-    "model": "gemini-2.0-flash"
+    "model": "auto",
+    "fallback_models": ["gemini-3-flash-preview", "gemini-2.5-pro", "gemini-2.0-flash", "auto"]
 }
 
 def load_config():

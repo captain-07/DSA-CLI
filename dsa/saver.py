@@ -15,18 +15,11 @@ def sanitize_filename(name: str) -> str:
 
 def save_note(vault_root: str, folder: str, problem_name: str, content: str) -> str:
     """
-    Saves the note in {vault_root}/DSA/{folder}/{problem_name}.md
+    Saves the note in {vault_root}/{folder}/{problem_name}.md
     """
-    # Create the root DSA directory if it doesn't exist
-    dsa_root = os.path.join(vault_root, "DSA")
-    folder_path = os.path.join(dsa_root, folder)
+    # Use vault_root directly as it is already the DSA folder
+    folder_path = os.path.join(vault_root, folder)
     
-    # Ensure folder_path is within vault_root/DSA to prevent path traversal (simple check)
-    if not os.path.abspath(folder_path).startswith(os.path.abspath(dsa_root)):
-         # If folder is something like "../../etc", it would fail here
-         # But folder comes from detect_folder which is safe. Still good practice.
-         pass
-
     if not os.path.exists(folder_path):
         os.makedirs(folder_path, exist_ok=True)
 

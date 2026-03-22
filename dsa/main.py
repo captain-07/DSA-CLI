@@ -21,7 +21,8 @@ def main():
     # 1. Load config
     config = load_config()
     vault_path = config.get("vault_path", "./vault")
-    model = args.model or config.get("model", "gemini-2.0-flash")
+    model = args.model or config.get("model", "auto")
+    fallback_models = config.get("fallback_models", [])
     
     if not os.path.exists(vault_path):
         print(f"⚠️ Warning: Vault path '{vault_path}' not found. Creating it...")
@@ -36,8 +37,7 @@ def main():
         sys.exit(1)
     
     # 3. Generate content via AI
-    print(f"🤖 Calling AI ({model})... (Be patient, quality takes time)")
-    raw_output = generate_notes(problem_name, mistake, model=model)
+    raw_output = generate_notes(problem_name, mistake, model=model, fallback_models=fallback_models)
     
     if not raw_output:
         print("❌ Error: Failed to generate notes from AI.")
@@ -49,7 +49,7 @@ def main():
     
     # 5. Route to correct folder
     folder = detect_folder(formatted_content)
-    print(f"📁 Target Folder: DSA/{folder}")
+    print(f"📁 Target Folder: {folder}")
     
     # 6. Save note
     try:
