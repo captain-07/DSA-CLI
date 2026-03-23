@@ -1,13 +1,25 @@
 import argparse
 import sys
 import os
+import glob
 from .config import load_config
 from .parser import parse_input
 from .generator import generate_notes
 from .formatter import clean_output
 from .router import detect_folder
-from .saver import save_note
+from .saver import save_note, sanitize_filename
 from .reviser import show_due_notes
+
+def check_existing_note(vault_path, problem_name):
+    """
+    Checks if a note with the same name already exists in the vault (any folder).
+    Returns the path if found, else None.
+    """
+    safe_name = sanitize_filename(problem_name)
+    # Search recursively for safe_name.md
+    search_pattern = os.path.join(vault_path, "**", f"{safe_name}.md")
+    matches = glob.glob(search_pattern, recursive=True)
+    return matches[0] if matches else None
 
 def main():
     """Main CLI execution flow."""
@@ -45,18 +57,24 @@ def main():
     if args.command == "generate":
         print("\n--- 🚀 DSA-CLI: Initializing ---")
         
-        model = args.model or config.get("model", "auto")
-        fallback_models = config.get("fallback_models", [])
-        
-        # Parse input
+        # 1. Parse input
         try:
             problem_name, mistake = parse_input(args.input)
             print(f"🧠 Parsing Input: '{problem_name}'")
         except Exception as e:
             print(f"❌ Error parsing input: {e}")
             sys.exit(1)
+
+        # 2. Check for existing note
+        existing_path = check_existing_note(vault_path, problem_name)
+        if existing_path:
+            print(f"⚠️  Note already exists: '{os.path.relpath(existing_path, vault_path)}'")
+            print("💡 This will overwrite the existing file with updated content.")
         
         # 3. Generate content via AI
+        model = args.model or config.get("model", "auto")
+        fallback_models = config.get("fallback_models", [])
+        
         raw_output = generate_notes(problem_name, mistake, model=model, fallback_models=fallback_models)
         
         if not raw_output:

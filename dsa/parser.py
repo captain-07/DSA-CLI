@@ -1,16 +1,20 @@
-def parse_input(input_str: str):
+import re
+
+def parse_input(raw_input: str) -> tuple[str, str]:
     """
-    Parses "problem name | mistake" or "problem name - mistake" input string.
-    Returns: (problem_name, mistake)
+    Parses 'Problem Name | Optional Note' and beautifies the name.
+    Example: 'two sum | check map' -> ('Two Sum', 'check map')
     """
-    # Prefer pipe separator
-    if "|" in input_str:
-        parts = [p.strip() for p in input_str.split("|", 1)]
-        return parts[0], parts[1]
+    if "|" in raw_input:
+        parts = raw_input.split("|", 1)
+        name = parts[0].strip()
+        note = parts[1].strip()
+    else:
+        name = raw_input.strip()
+        note = "No specific note provided."
+
+    # Beautify the problem name: Title Case (e.g., 'two sum' -> 'Two Sum')
+    # We use a regex to handle cases like '3sum' -> '3Sum' or 're-order' -> 'Re-Order'
+    beautified_name = re.sub(r"[a-zA-Z0-9]+", lambda m: m.group(0).capitalize(), name)
     
-    # Try dash if pipe is missing but only if there's enough space
-    if " - " in input_str:
-        parts = [p.strip() for p in input_str.split(" - ", 1)]
-        return parts[0], parts[1]
-    
-    return input_str.strip(), "No specific mistake mentioned."
+    return beautified_name, note

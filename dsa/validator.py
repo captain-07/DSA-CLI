@@ -10,7 +10,8 @@ class NoteValidator:
         r"## Edge Cases",
         r"## Mistakes",
         r"## Complexity",
-        r"## Difficulty"
+        r"## Difficulty",
+        r"## Metadata & Placement Tags"
     ]
 
     @staticmethod
@@ -30,9 +31,6 @@ class NoteValidator:
             return False, f"Missing sections: {', '.join(missing_sections)}"
 
         # Validate Dry Run length (at least 2 data rows in table)
-        # Search for the section and then find the table within it
-        # Note: We look for the next header or end of string, but ignore '---' as it might be inside the section text (if not careful)
-        # Actually, let's just look for the table explicitly.
         dry_run_match = re.search(r"## Dry Run(.*?)(?=\n##|$)", content, re.DOTALL | re.IGNORECASE)
         if dry_run_match:
             section_text = dry_run_match.group(1)
@@ -50,5 +48,11 @@ class NoteValidator:
                 return False, "Complexity analysis lacks sufficient explanation."
         else:
             return False, "Complexity section not found."
+
+        # Ensure Metadata is at the bottom (after Code/Complexity)
+        meta_pos = content.find("## Metadata & Placement Tags")
+        code_pos = content.find("## Code")
+        if meta_pos < code_pos:
+            return False, "Metadata tags must be at the bottom of the note."
 
         return True, "Valid"
