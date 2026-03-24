@@ -79,3 +79,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 This project is licensed under the MIT License.
+## 💖 Support
+
+If this tool saved your time in DSA prep:
+
+👉 GitHub Sponsors: https://github.com/sponsors/captain-07
