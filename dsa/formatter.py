@@ -14,20 +14,19 @@ def clean_output(raw_text: str) -> str:
     # Strip whitespace
     clean = clean.strip()
     
-    # Ensure mandatory headers are present
-    mandatory_headers = [
-        "## Metadata & Placement Tags",
-        "## Difficulty",
-        "## Pattern",
-        "## Logic Evolution",
-        "## Python Implementation",
-        "## Dry Run Table",
-        "## Edge Cases",
-        "## Common Mistakes",
-        "## Complexity Analysis"
-    ]
-    
     # Normalize multiple newlines between sections to exactly 2 newlines (one blank line)
     clean = re.sub(r'\n{3,}', '\n\n', clean)
     
+    # Move Metadata section to the bottom if it exists
+    # Matches "## ... Metadata & Placement Tags" and everything after it
+    metadata_pattern = re.compile(r"(## .*Metadata & Placement Tags.*)", re.DOTALL | re.IGNORECASE)
+    match = metadata_pattern.search(clean)
+    
+    if match:
+        metadata_section = match.group(1).strip()
+        # Remove the section from its current position
+        clean_without_metadata = metadata_pattern.sub("", clean).strip()
+        # Append it to the end
+        clean = f"{clean_without_metadata}\n\n{metadata_section}"
+
     return clean

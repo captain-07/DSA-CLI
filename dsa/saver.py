@@ -56,8 +56,13 @@ def save_note(vault_root: str, folder: str, problem_name: str, content: str) -> 
     
     today = datetime.now().strftime("%Y-%m-%d")
     
-    # Prepend frontmatter and append checklist
-    final_content = generate_frontmatter(today) + content + generate_revision_checklist(today)
+    # Combined metadata and checklist at the bottom
+    metadata = "\n\n---\n"
+    metadata += "### 📝 Properties\n"
+    metadata += generate_frontmatter(today)
+    metadata += generate_revision_checklist(today)
+    
+    final_content = content + metadata
     
     try:
         with open(file_path, "w", encoding="utf-8") as f:

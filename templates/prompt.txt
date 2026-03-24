@@ -1,66 +1,148 @@
-Act as an elite Software Engineer and DSA expert. Generate a structured markdown note for the following DSA problem.
+Act as an elite Software Engineer and DSA expert focused on INTERVIEW PREPARATION and FAST REVISION.
 
-Problem Name: {problem_name}
-User Note/Mistake: {mistake}
+Your task is to generate a HIGH-SIGNAL, STRUCTURED markdown note for a DSA problem.
 
-Follow these STRICT formatting rules:
+Problem Name: {problem_name}  
+User Mistake: {mistake}
 
-1. **Header:**
-   - Start with '# {problem_name}'.
-   - Use '##' for main headers.
+---
 
-2. **Difficulty:**
-   - Header: `## Difficulty`
-   - Classify as Easy, Medium, or Hard based on interview standards.
-   - Use both a header and a tag: #easy, #medium, or #hard.
+STRICT RULES:
 
-3. **Pattern:**
-   - Header: `## Pattern`
-   - Define the algorithmic pattern (e.g., Two Pointers, Sliding Window, Greedy, Backtracking).
+- Follow exact structure (no extra sections, no missing sections)
+- Keep content concise, scannable, and high-value
+- Avoid unnecessary verbosity
+- Prefer clarity over explanation
+- Output must be Obsidian-friendly Markdown
+- Use '---' to separate sections
+- No callouts, no unnecessary styling
+- Total length: ~300–500 words
 
-4. **Key Idea:**
-   - Header: `## Key Idea`
-   - Summarize the core intuition in 1-2 sentences.
-
-5. **Approach:**
-   - Header: `## Approach`
-   - **Brute Force:** Describe the naive approach and why it's inefficient.
-   - **Optimal:** Explain the most efficient logic clearly, step-by-step.
-
-6. **Code:**
-   - Header: `## Code`
-   - Provide clean, Pythonic code.
-   - Include inline comments explaining complex transitions.
-
-7. **Dry Run:**
-   - Header: `## Dry Run`
-   - Create a Markdown table. Trace a non-trivial sample input step-by-step (at least 3-4 steps), showing variable changes (e.g., `i`, `j`, `current_sum`, `ans`).
-
-8. **Edge Cases:**
-   - Header: `## Edge Cases`
-   - List 3-4 specific scenarios (e.g., empty array, $n=1$, all identical elements, negative integers).
-
-9. **Mistakes:**
-   - Header: `## Mistakes`
-   - Use an Obsidian Callout (> [!CAUTION] Mistakes).
-   - List logical "gotchas" or syntax errors.
-   - Address the user's specific note: {mistake}
-
-10. **Complexity:**
-    - Header: `## Complexity`
-    - Use LaTeX for all math: $O(n)$ or $O(n \log n)$.
-    - Provide a 1-sentence justification for both Time and Space complexity.
-
-11. **Metadata & Placement Tags:**
-    - Header: `## Metadata & Placement Tags`
-    - **PLACEMENT: This section MUST be at the very bottom of the note.**
-    - Identify common companies that ask this question.
-    - Add a "Confidence Level" placeholder: [ ] Low [ ] Mid [ ] High.
-    - Include 2-4 concept links using PascalCase inside [[ ]] and a hashtag, e.g., #prefixsum [[Prefix Sum]], #slidingwindow [[Sliding Window]], #hashmap [[HashMap]].
-
-12. **Output ONLY the Markdown content.** No "Here is your note" or "Sure, I can help."
-13. **Include a horizontal separator '---' between main sections.**
-14. **Ensure the total output is at least 250 words.**
+---
 
 # {problem_name}
+
 ---
+
+## Pattern
+
+- One or MORE patterns allowed
+- Be precise
+
+Example:
+Two Pointers + Sorting  
+Prefix Sum + HashMap  
+
+---
+
+## ⚡ Key Idea (Core Insight)
+
+- 2–3 lines max
+- Must clearly explain what unlocks the solution
+
+---
+
+## ⚡ Quick Recall (VERY IMPORTANT)
+
+- 1–2 lines
+- Should help solve instantly in interview
+
+---
+
+## Approach
+
+### Brute Force
+- 1–2 lines
+- Include time complexity
+
+### Better
+- Intermediate improvement (if applicable)
+- Mention improvement idea + complexity
+
+### Optimal
+- Clear step-by-step logic
+- Minimal but precise
+
+---
+
+## Code (Python)
+
+- Clean and readable
+- Minimal comments (only where necessary)
+
+---
+
+## Dry Run (Smart Example)
+
+Rules:
+- Use NON-TRIVIAL input (duplicates / negatives / edge behavior)
+- Use a **markdown table** for step-by-step clarity.
+- Columns: Step, Variables, Explanation.
+- At least 3-4 steps.
+
+---
+
+## Edge Cases
+
+- 3–5 high-value cases
+- One-line explanation each
+
+---
+
+## Mistakes
+
+- Bullet points only
+- Direct and actionable
+- MUST include user mistake: {mistake}
+
+---
+
+## Complexity
+
+Time: O(...) → (1 line reasoning)  
+Space: O(...) → (1 line reasoning)
+
+---
+
+## Difficulty
+
+Classify based on interview standards:
+Easy / Medium / Hard  
+Also include tag: #easy / #medium / #hard
+
+---
+
+## Metadata & Placement Tags
+
+(This section MUST be the absolute LAST section of the note)
+
+- **Target Companies:**
+  - Identify REAL companies that have asked or are likely to ask this problem (use general knowledge, do NOT hallucinate obscure companies)
+  - Use tags like: #Amazon #Google #Microsoft etc.
+
+- **Confidence Checklist:**
+  - [ ] Low  
+  - [ ] Medium  
+  - [ ] High  
+
+- **Concepts:**
+  - Add 2–5 tags with Obsidian links:
+  Example → #twopointers [[Two Pointers]], #hashmap [[HashMap]], #sorting [[Sorting]]
+
+- **Tags:**
+  - #dsa #important #revisit  
+  - Add 2–4 problem-specific tags  
+  - Include Obsidian links: [[Concept Name]]
+
+---
+
+CONSTRAINTS:
+
+- No long paragraphs
+- No unnecessary theory
+- Keep it fast to revise (under 1 minute read)
+- If output becomes too verbose, shorten automatically
+
+---
+
+Output ONLY the markdown content.
