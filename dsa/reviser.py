@@ -3,25 +3,9 @@ import re
 from datetime import datetime
 import yaml
 
-def parse_metadata(file_path):
-    """
-    Parses the YAML frontmatter of a markdown file.
-    """
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-            # Use search instead of match to handle potential leading newlines
-            match = re.search(r'^---\n(.*?)\n---\n', content, re.DOTALL | re.MULTILINE)
-            if match:
-                return yaml.safe_load(match.group(1))
-    except Exception as e:
-        # print(f"⚠️ Error parsing {file_path}: {e}")
-        pass
-    return None
-
 def check_revisions(vault_path):
     """
-    Scans all markdown files in the vault and finds notes due today.
+    Scans all markdown files in the vault and finds notes due today or overdue.
     """
     today = datetime.now().strftime("%Y-%m-%d")
     due_notes = []
@@ -30,17 +14,41 @@ def check_revisions(vault_path):
         for file in files:
             if file.endswith('.md'):
                 file_path = os.path.join(root, file)
-                metadata = parse_metadata(file_path)
                 
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                except Exception:
+                    continue
+
+                # Parse frontmatter
+                match = re.search(r'^---\n(.*?)\n---\n', content, re.DOTALL | re.MULTILINE)
+                if not match:
+                    continue
+                
+                try:
+                    metadata = yaml.safe_load(match.group(1))
+                except Exception:
+                    continue
+
                 if metadata and 'revisions' in metadata:
                     revisions = metadata['revisions']
                     if isinstance(revisions, list):
-                        # Some dates might be stored as datetime objects by yaml.safe_load
-                        # so we convert them to strings
-                        revisions_str = [str(r) for r in revisions]
-                        if today in revisions_str:
-                            rel_path = os.path.relpath(file_path, vault_path)
-                            due_notes.append(rel_path)
+                        # Find all pending dates <= today
+                        for rev_date in revisions:
+                            rev_date_str = str(rev_date)
+                            if rev_date_str <= today:
+                                # Check if this specific revision is marked as [x] (done)
+                                done_pattern = rf"- \[x\] .*?\({rev_date_str}\)"
+                                if not re.search(done_pattern, content):
+                                    rel_path = os.path.relpath(file_path, vault_path)
+                                    
+                                    # Try to find which day label it is (e.g., Day 2)
+                                    label_match = re.search(rf"- \[ \] (Day \d+) Revision \({rev_date_str}\)", content)
+                                    label = label_match.group(1) if label_match else "Revision"
+                                    
+                                    due_notes.append(f"{rel_path} ({label} - {rev_date_str})")
+                                    break # Only add a file once even if multiple revisions are due
     
     return due_notes
 

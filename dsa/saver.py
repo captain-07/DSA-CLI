@@ -56,13 +56,13 @@ def save_note(vault_root: str, folder: str, problem_name: str, content: str) -> 
     
     today = datetime.now().strftime("%Y-%m-%d")
     
-    # Combined metadata and checklist at the bottom
-    metadata = "\n\n---\n"
-    metadata += "### 📝 Properties\n"
-    metadata += generate_frontmatter(today)
-    metadata += generate_revision_checklist(today)
+    # Obsidian frontmatter MUST be at the very top
+    frontmatter = generate_frontmatter(today)
     
-    final_content = content + metadata
+    # Combined checklist at the bottom
+    checklist = generate_revision_checklist(today)
+    
+    final_content = frontmatter + content + checklist
     
     try:
         with open(file_path, "w", encoding="utf-8") as f:

@@ -23,6 +23,22 @@ STRICT RULES:
 # {problem_name}
 
 ---
+## Metadata & Placement Tags
+
+(This section MUST be the top section of the note)
+
+- **Target Companies:**
+  - Identify REAL companies that have asked or are likely to ask this problem (use general knowledge, do NOT hallucinate obscure companies)
+  - Use tags like: #Amazon #Google #Microsoft etc.
+
+- **Confidence Checklist:**
+  - [ ] Low  
+  - [ ] Medium  
+  - [ ] High  
+
+- **Concepts:**
+  - Add 2–5 tags with Obsidian links:
+  Example → #twopointers [[Two Pointers]], #hashmap [[HashMap]], #sorting [[Sorting]]
 
 ## Pattern
 
@@ -32,6 +48,13 @@ STRICT RULES:
 Example:
 Two Pointers + Sorting  
 Prefix Sum + HashMap  
+
+---
+## Difficulty
+
+Classify based on interview standards:
+Easy / Medium / Hard  
+Also include tag: #easy / #medium / #hard
 
 ---
 
@@ -54,6 +77,7 @@ Prefix Sum + HashMap
 ### Brute Force
 - 1–2 lines
 - Include time complexity
+- This must be extreme brute force
 
 ### Better
 - Intermediate improvement (if applicable)
@@ -68,7 +92,8 @@ Prefix Sum + HashMap
 ## Code (Python)
 
 - Clean and readable
-- Minimal comments (only where necessary)
+- Clean comments
+- Easy to understand
 
 ---
 
@@ -104,35 +129,12 @@ Space: O(...) → (1 line reasoning)
 
 ---
 
-## Difficulty
-
-Classify based on interview standards:
-Easy / Medium / Hard  
-Also include tag: #easy / #medium / #hard
-
----
-
-## Metadata & Placement Tags
-
-(This section MUST be the absolute LAST section of the note)
-
-- **Target Companies:**
-  - Identify REAL companies that have asked or are likely to ask this problem (use general knowledge, do NOT hallucinate obscure companies)
-  - Use tags like: #Amazon #Google #Microsoft etc.
-
-- **Confidence Checklist:**
-  - [ ] Low  
-  - [ ] Medium  
-  - [ ] High  
-
-- **Concepts:**
-  - Add 2–5 tags with Obsidian links:
-  Example → #twopointers [[Two Pointers]], #hashmap [[HashMap]], #sorting [[Sorting]]
-
-- **Tags:**
+## Tags and Properties
+(This will be at bottom of note)
   - #dsa #important #revisit  
   - Add 2–4 problem-specific tags  
   - Include Obsidian links: [[Concept Name]]
+  - Revision date and all related metadata
 
 ---
 
@@ -142,6 +144,7 @@ CONSTRAINTS:
 - No unnecessary theory
 - Keep it fast to revise (under 1 minute read)
 - If output becomes too verbose, shorten automatically
+- If their are multiple optimal solutions, include all of them one by one
 
 ---
 

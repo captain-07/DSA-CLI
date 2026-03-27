@@ -14,7 +14,7 @@ This file contains foundational instructions and mandates for Gemini CLI while w
 
 ## 📁 Storage Mandate
 - All generated notes MUST be saved in the directory defined in `config.json`'s `vault_path`.
-- **User Default:** `C:\Users\USER\OneDrive\Documents\Desktop\Obsidian\DSA`
+- **User Default:** `C:\Users\USER\Desktop\Obsidian\DSA`
 - Notes should be organized by topic (e.g., Arrays, DP, Graph) as determined by `dsa/router.py`.
 
 ## 🧪 Development & Quality Mandates
