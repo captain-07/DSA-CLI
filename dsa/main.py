@@ -8,6 +8,7 @@ from .generator import generate_notes
 from .formatter import clean_output
 from .router import detect_folder
 from .saver import save_note, sanitize_filename
+from .sync import sync_to_git
 from .reviser import show_due_notes
 
 def check_existing_note(vault_path, problem_name):
@@ -94,6 +95,10 @@ def main():
             final_path = os.path.abspath(save_note(vault_path, folder, problem_name, formatted_content))
             print(f"\n✅ SUCCESS! Your note is ready.")
             print(f"📍 Location: {final_path}")
+            
+            # 7. Sync to Git
+            sync_to_git(vault_path, problem_name)
+            
         except Exception as e:
             print(f"❌ Error saving note: {e}")
             sys.exit(1)
