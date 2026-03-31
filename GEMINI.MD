@@ -9,7 +9,7 @@ This file contains foundational instructions and mandates for Gemini CLI while w
 
 ## 🛠 Model Strategy
 - **Primary Model:** `auto` (Resolves to the best available model, usually Gemini 3).
-- **Fallback Chain:** If the primary model fails, try `gemini-3-flash-preview`, `gemini-2.5-pro`, `gemini-2.0-flash`, and finally `auto`.
+- **Fallback Chain:** If the primary model fails, try `gemini-3-flash-preview`, `gemini-2.5-pro`, `gemini-2.5-flash`, and finally `auto`.
 - **Logic:** The `dsa/generator.py` script is responsible for iterating through this chain until a valid response is received.
 
 ## 📁 Storage Mandate
@@ -23,6 +23,6 @@ This file contains foundational instructions and mandates for Gemini CLI while w
 - **Validation:** Always verify that the file was correctly saved to the Obsidian path after execution.
 
 ## 📝 Coding Standards
-- Maintain clean, modular Python code.
+- Maintain clean, modular, begginer friendly Python code.
 - Ensure all subprocess calls to `gemini` CLI use stdin to avoid shell escaping issues on Windows.
 - Configuration should be loaded centrally via `dsa/config.py`.

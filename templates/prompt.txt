@@ -92,8 +92,8 @@ Also include tag: #easy / #medium / #hard
 ## Code (Python)
 
 - Clean and readable
-- Clean comments
-- Easy to understand
+- Clean comments for better understanding
+- Easy to understand begginer friendly code
 
 ---
 
