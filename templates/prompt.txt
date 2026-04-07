@@ -129,12 +129,22 @@ Space: O(...) → (1 line reasoning)
 
 ---
 
+## Similar Problems
+
+- 3–5 similar problems that use the same pattern or concept
+- Format: [Problem Name](link) - Difficulty
+- Example: [Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/) - Easy
+- Prefer LeetCode links.
+
+---
+
 ## Tags and Properties
 (This will be at bottom of note)
   - #dsa #important #revisit  
   - Add 2–4 problem-specific tags  
   - Include Obsidian links: [[Concept Name]]
   - Revision date and all related metadata
+  - **Problem Link:** [Find the most relevant link for {problem_name}, prefer LeetCode > GeeksforGeeks > Others]
 
 ---
 

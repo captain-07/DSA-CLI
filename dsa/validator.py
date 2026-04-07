@@ -16,7 +16,9 @@ class NoteValidator:
         r"## .*Mistakes",
         r"## .*Complexity",
         r"## .*Difficulty",
-        r"## .*Metadata & Placement Tags"
+        r"## .*Metadata & Placement Tags",
+        r"## .*Similar Problems",
+        r"## .*Tags and Properties"
     ]
 
     @staticmethod
