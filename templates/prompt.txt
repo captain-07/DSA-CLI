@@ -91,9 +91,10 @@ Also include tag: #easy / #medium / #hard
 
 ## Code (Python)
 
-- Clean and readable
-- Clean comments for better understanding
-- Easy to understand begginer friendly code
+- **ALWAYS use a `class Solution:` structure** (LeetCode standard).
+- Clean and readable with professional naming conventions.
+- Clean comments for better understanding.
+- Beginner-friendly yet optimal implementation.
 
 ---
 
